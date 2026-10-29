@@ -13,7 +13,7 @@ _Exemple : à gauche le PDF d'origine, à droite le Word obtenu (rendu LibreOffi
 Il faut Python 3.10 ou plus. Pour les PDF scannés, installez aussi [Tesseract](https://github.com/tesseract-ocr/tesseract) avec la langue française.
 
 ```bash
-git clone https://github.com/YOUR-USER/pdf2docx.git
+git clone https://github.com/Fifah727/pdf2docx
 cd pdf2docx
 python -m venv .venv
 .venv\Scripts\activate            # Linux / macOS : source .venv/bin/activate
