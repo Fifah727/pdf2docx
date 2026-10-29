@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdf2docx"
+version = "0.1.0"
+description = "Convertit un PDF en DOCX modifiable en gardant la mise en page (colonnes, tableaux, encadrés, scans avec OCR), sans Microsoft Word."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "AGPL-3.0-or-later" }
+authors = [{ name = "FIFALIANA Sarobidy" }]
+keywords = ["pdf", "docx", "word", "ocr", "converter", "layout"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
+  "Topic :: Office/Business",
+  "Topic :: Text Processing",
+]
+dependencies = [
+  "pymupdf>=1.24",
+  "python-docx>=1.1",
+  "pytesseract>=0.3.10",
+  "opencv-python-headless>=4.8",
+  "pillow>=10",
+  "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+bench = ["scikit-image>=0.22"]
+dev = ["pytest>=8", "ruff>=0.5", "scikit-image>=0.22"]
+
+[project.scripts]
+pdf2docx = "pdf2docx.__main__:main"
+pdf2docx-gui = "pdf2docx.gui:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["pdf2docx*"]
+
+[tool.setuptools.package-data]
+pdf2docx = ["web/*"]
+
+[tool.ruff]
+line-length = 130
+target-version = "py310"
+extend-exclude = ["corpus", "out"]
+
+[tool.ruff.lint]
+select = ["F", "E9", "B", "UP"]
+ignore = ["B905", "B007", "UP031"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore::DeprecationWarning"]

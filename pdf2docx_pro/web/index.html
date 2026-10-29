@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDF vers Word</title>
+<meta name="description" content="Convertit un PDF en document Word modifiable en gardant la mise en page. Tout se passe sur votre ordinateur.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<main>
+  <header class="top">
+    <h1>PDF vers Word</h1>
+    <p class="lead">Un document Word modifiable, avec la mise en page du PDF. La conversion se fait sur votre ordinateur&nbsp;: rien n'est envoyé sur Internet.</p>
+  </header>
+
+  <div id="notice" class="notice" role="status" hidden></div>
+
+  <section id="results" aria-live="polite" hidden>
+    <div class="results-head">
+      <h2>Vos documents</h2>
+      <a id="zip" class="btn small" href="#" hidden>Tout télécharger (.zip)</a>
+    </div>
+    <ul id="list"></ul>
+  </section>
+
+  <label id="drop" class="sheet" tabindex="0">
+    <input id="file" type="file" accept="application/pdf,.pdf" multiple>
+    <span class="sheet-title">Déposez vos PDF ici</span>
+    <span class="sheet-sub">ou <u>choisissez des fichiers</u></span>
+    <span id="limits" class="sheet-limits"></span>
+  </label>
+
+   
+
+  <section class="settings" aria-label="Réglages">
+    <fieldset>
+      <legend>PDF scanné (reconnaissance du texte)</legend>
+      <div class="seg" role="radiogroup" id="ocr">
+        <label><input type="radio" name="ocr" value="auto" checked><span>Automatique</span></label>
+        <label><input type="radio" name="ocr" value="off"><span>Jamais</span></label>
+        <label><input type="radio" name="ocr" value="force"><span>Toujours</span></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Langue du texte</legend>
+      <div class="seg" role="radiogroup" id="lang">
+        <label><input type="radio" name="lang" value="fra+eng" checked><span>Français et anglais</span></label>
+        <label><input type="radio" name="lang" value="fra"><span>Français</span></label>
+        <label><input type="radio" name="lang" value="eng"><span>Anglais</span></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Pages à convertir</legend>
+      <div class="seg" role="radiogroup" id="pages">
+        <label><input type="radio" name="pages" value="0" checked><span>Toutes</span></label>
+        <label><input type="radio" name="pages" value="1"><span>La première (essai rapide)</span></label>
+      </div>
+    </fieldset>
+
+    <details>
+      <summary>Réglages avancés</summary>
+      <div class="adv">
+        <label class="chk"><input type="checkbox" id="borderless" checked><span>Tableaux sans bordures</span></label>
+        <label class="chk"><input type="checkbox" id="boxes" checked><span>Encadrés colorés</span></label>
+        <label class="chk"><input type="checkbox" id="figures" checked><span>Graphiques et schémas, insérés en image</span></label>
+        <label class="chk"><input type="checkbox" id="shapes" checked><span>Cadres, filets et formes dessinés</span></label>
+        <label class="chk"><input type="checkbox" id="headers" checked><span>En-têtes, pieds de page et numéros de page</span></label>
+        <label class="chk"><input type="checkbox" id="keep"><span>Garder les retours à la ligne du PDF<small>Plus fidèle à l'écran, moins pratique à modifier.</small></span></label>
+        <label class="chk"><input type="checkbox" id="formulas"><span>Formules en texte plutôt qu'en image<small>Les formules en image sont plus fidèles mais ne se modifient pas.</small></span></label>
+        <button type="button" id="reset" class="link">Rétablir les réglages d'origine</button>
+      </div>
+    </details>
+  </section>
+</main>
+
+<footer>
+  <p>© <span id="year">2026</span> FIFALIANA Sarobidy, Madagascar</p>
+  <p><span class="curious">Made with curiosity</span><span class="sep" aria-hidden="true"></span><a id="source" href="https://github.com/" target="_blank" rel="noopener">Code source (AGPL-3.0)</a></p>
+</footer>
+<script src="/app.js"></script>
+</body>
+</html>

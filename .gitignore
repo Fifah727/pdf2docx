@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+
+# Résultats de conversion et du banc d'essai
+out/
+*.docx
+!docs/**/*.docx
+
+# PDF de test personnels ou sous licence inconnue : à ne jamais publier
+corpus/real/*
+!corpus/real/README.md
+
+# Éditeurs / système
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+.env.*
+*.pem
+*.key

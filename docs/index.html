@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>pdf2docx : du PDF au Word, avec la mise en page</title>
+<meta name="description" content="Convertit un PDF en document Word modifiable en gardant colonnes, tableaux, encadrés et scans. Gratuit, libre, sur votre ordinateur.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <h1>Du PDF au Word, sans casser la mise en page</h1>
+  <p class="lead">pdf2docx rend un document Word modifiable, avec les colonnes, les tableaux, les encadrés et les images à leur place. Les PDF scannés sont lus par OCR. Tout reste sur votre ordinateur.</p>
+  <div class="cta">
+    <a class="btn" href="#installer">Installer</a>
+    <a class="btn ghost" id="repo" href="https://github.com/YOUR-USER/pdf2docx">Code source</a>
+  </div>
+</header>
+
+<section aria-labelledby="t-avant">
+  <h2 id="t-avant">Avant et après</h2>
+  <figure>
+    <img src="img/avant-apres.png" alt="À gauche, un PDF avec des encadrés colorés et une image. À droite, le Word obtenu, identique.">
+    <figcaption>PDF d'origine à gauche, Word obtenu à droite (page de test fournie avec le projet, rendue par LibreOffice).</figcaption>
+  </figure>
+</section>
+
+<section aria-labelledby="t-garde">
+  <h2 id="t-garde">Ce qui est conservé</h2>
+  <dl>
+    <div><dt>Texte et typographie</dt><dd>Polices, tailles, gras, italique, exposants, soulignements, retours à la ligne de Word simulés pour que les lignes tombent aux mêmes endroits.</dd></div>
+    <div><dt>Colonnes</dt><dd>Vraies sections Word de deux colonnes ou plus, pas un tableau déguisé.</dd></div>
+    <div><dt>Tableaux</dt><dd>Avec bordures, sans bordures, cellules fusionnées, bordures différentes d'une cellule à l'autre.</dd></div>
+    <div><dt>Encadrés, cadres et formes</dt><dd>Fonds colorés, filets, cadres d'en-tête, formes courbes.</dd></div>
+    <div><dt>Images</dt><dd>Recadrées comme dans le PDF, transparence conservée, texte qui les contourne.</dd></div>
+    <div><dt>En-têtes et pieds de page</dt><dd>Vrais en-têtes Word, avec numéro de page automatique.</dd></div>
+    <div><dt>PDF scannés</dt><dd>Redressement de la page, reconnaissance du texte, tableaux retrouvés sur l'image.</dd></div>
+  </dl>
+</section>
+
+<section id="installer" aria-labelledby="t-install">
+  <h2 id="t-install">Installer</h2>
+  <p>Python 3.10 ou plus. Pour les PDF scannés, ajoutez <a href="https://github.com/tesseract-ocr/tesseract">Tesseract</a> avec la langue française.</p>
+<pre><code>git clone https://github.com/YOUR-USER/pdf2docx.git
+cd pdf2docx
+python -m venv .venv
+.venv\Scripts\activate        # Linux / macOS : source .venv/bin/activate
+pip install .
+pdf2docx-gui</code></pre>
+  <p>Une page s'ouvre dans le navigateur : glissez vos PDF, téléchargez les fichiers Word.</p>
+  <figure>
+    <img src="img/interface-resultat.png" alt="Interface : deux PDF convertis, avec les boutons Télécharger et Voir l'original.">
+    <figcaption>L'interface locale. Les PDF de plus de 60 pages ou de 30 Mo, protégés par mot de passe ou illisibles sont refusés avec une explication.</figcaption>
+  </figure>
+  <p class="note">Cette page est une vitrine : GitHub Pages ne peut pas exécuter Python. Le convertisseur tourne sur votre machine, et vos fichiers ne partent jamais sur Internet.</p>
+</section>
+
+<section aria-labelledby="t-mesures">
+  <h2 id="t-mesures">Fidélité mesurée</h2>
+  <p>Chaque PDF du corpus de test est converti, relu par LibreOffice puis comparé à l'original (texte, position des mots, rendu visuel). Un score de 1 serait une copie parfaite.</p>
+  <table>
+    <thead><tr><th>Document de test</th><th>Score</th></tr></thead>
+    <tbody>
+      <tr><td>Cellules fusionnées</td><td class="n">0,985</td></tr>
+      <tr><td>Tableaux sans bordures</td><td class="n">0,974</td></tr>
+      <tr><td>Rapport avec en-tête et pied de page</td><td class="n">0,952</td></tr>
+      <tr><td>Encadrés et image</td><td class="n">0,922</td></tr>
+      <tr><td>Scan droit, propre</td><td class="n">0,910</td></tr>
+      <tr><td>Formules</td><td class="n">0,890</td></tr>
+      <tr><td>Texte sur trois colonnes</td><td class="n">0,881</td></tr>
+      <tr><td>Scan incliné</td><td class="n">0,839</td></tr>
+      <tr><td><strong>Moyenne</strong></td><td class="n"><strong>0,919</strong></td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:12px;font-size:.92rem;color:var(--mut)">Mesures faites avec LibreOffice, pas avec Word : de petits écarts sont possibles. Les formules et les graphiques sont insérés en image.</p>
+</section>
+
+<section aria-labelledby="t-licence">
+  <h2 id="t-licence">Licence</h2>
+  <p>Logiciel libre sous GNU AGPL v3 ou ultérieure, comme PyMuPDF sur lequel il s'appuie. Vous pouvez l'utiliser, le modifier et le partager, à condition de garder le même régime et de fournir le code source.</p>
+</section>
+
+<footer>
+  <p>© 2026 FIFALIANA Sarobidy, Madagascar</p>
+  <p><span class="curious">Made with curiosity</span></p>
+</footer>
+</div>
+</body>
+</html>
